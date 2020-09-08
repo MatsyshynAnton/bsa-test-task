@@ -6,7 +6,7 @@ export class CassandraMapperFactory {
         this.client = client;
     }
 
-    getMapperForTable (keyspace, tableName) {
+    getMapperForTable(keyspace, tableName) {
         const Mapper = cassandra.mapping.Mapper;
 
         const mappingOptions = {

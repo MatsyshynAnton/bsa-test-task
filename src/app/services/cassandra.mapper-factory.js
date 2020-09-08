@@ -6,7 +6,7 @@ export default class CassandraMapperFactory {
         this.client = client;
     }
 
-    getMapperForTable (keyspace, tableName, customMappingOptions) {
+    getMapperForTable (keyspace, tableName) {
         const Mapper = cassandra.mapping.Mapper;
 
         const mappingOptions = {
@@ -18,6 +18,6 @@ export default class CassandraMapperFactory {
             },
           };
         
-        return new Mapper(this.client, customMappingOptions ? customMappingOptions :mappingOptions).forModel('Model');    
+        return new Mapper(this.client, mappingOptions).forModel('Model');    
     }
 }

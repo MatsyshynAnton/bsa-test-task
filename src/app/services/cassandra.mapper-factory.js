@@ -1,6 +1,6 @@
 import cassandra from 'cassandra-driver';
 
-export default class CassandraMapperFactory {
+export class CassandraMapperFactory {
 
     constructor(client) {
         this.client = client;

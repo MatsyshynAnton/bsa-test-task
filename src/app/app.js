@@ -1,6 +1,7 @@
 import cassandra from 'cassandra-driver';
-import CassandraClientFactory from './services/cassandra.client-factory.js'
-import CassandraMapperFactory from './services/cassandra.mapper-factory.js';
+import { CassandraClientFactory } from './services/cassandra.client-factory.js'
+import { CassandraMapperFactory } from './services/cassandra.mapper-factory.js';
+import { CassandraSchemaReader } from './services/cassandra.schema-reader.js';
 
 export default class App {
 
@@ -10,6 +11,8 @@ export default class App {
 
         const mapperFactory = new CassandraMapperFactory(client);
         const userMapper = mapperFactory.getMapperForTable('social', 'user');
+
+        const schema = new CassandraSchemaReader(userMapper);
 
         userMapper.get({id: '74f1b09a-8610-4822-94dd-4ef810591a69'})
             .then(res => console.log(res));   

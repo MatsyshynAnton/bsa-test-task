@@ -1,6 +1,6 @@
 import { cassandraConfigs } from '../../config.js';
 
-export default class CassandraClientFactory {
+export class CassandraClientFactory {
 
     constructor(cassandra) {
         this.cassandra = cassandra;

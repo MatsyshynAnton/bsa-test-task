@@ -1,4 +1,4 @@
-import { cassandraConfigs } from '../config.js';
+import { cassandraConfigs } from '../../config.js';
 
 export default class CassandraClientFactory {
 

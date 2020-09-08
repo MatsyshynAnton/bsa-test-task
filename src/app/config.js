@@ -1,6 +1,6 @@
-export const cassandra = {
+export const cassandraConfigs = {
     host: 'localhost',
-    port: 7000,
+    port: 9042,
     user: 'TODO',
     password: 'TODO'
 }

@@ -18,7 +18,7 @@ export class CassandraSchemaGenerator {
             throw new Error('Cannot make schema from empty table');
         }
 
-        const performedEntity = this.performerResolver.performEntity(table, arrayResult[0]);
+        const performedEntity = this.performerResolver.performEntity(table, arrayResult[3]);
 
         return JsonShemaGenerator.getJsonSchema(performedEntity, table);
     }

@@ -15,7 +15,8 @@ export default class App {
         const schemaReader = new CassandraSchemaGenerator(mapperFactory);
 
         schemaReader.getTableShema('society','user')
-            .then(res => console.log(res));
+            .then(res => console.log(res.properties.address));
+
         // const user = { id: ' ggg', age: 5}
 
         // const schema = JsonShemaGenerator.getJsonSchema(user, 'user');

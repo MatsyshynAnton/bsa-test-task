@@ -2,7 +2,7 @@ import cassandra from 'cassandra-driver';
 import { CassandraClientFactory } from './services/cassandra.client-factory.js'
 import { CassandraMapperFactory } from './services/cassandra.mapper-factory.js';
 import { CassandraSchemaGenerator } from './services/cassandra.schema-generator.js';
-import { JsonShemaGenerator } from './services/json-schema-generator.js';
+import { JsonWriter } from './services/json-writer.js';
 
 export default class App {
 
@@ -15,7 +15,11 @@ export default class App {
         const schemaReader = new CassandraSchemaGenerator(mapperFactory);
 
         schemaReader.getTableShema('society','user', 'id', '533fe7f5-6ba3-46f2-89e6-686e4f3c6063')
-            .then(res => console.log(res));
+            .then(res => {
+                console.log(res);
+                JsonWriter.writeToJson(res);
+            })
+            .catch(error => console.error(error));
 
         // const user = { id: ' ggg', age: 5}
 

@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "cassandra-driver": "^4.6.0",
+    "generate-schema": "^2.6.0"
+  }
+}

@@ -5,9 +5,9 @@ export class JsonWriter {
         const json = JSON.stringify(obj);
         fs.writeFile('./src/result.json', json, err => {
             if (err) {
-                console.log('Error writing file', err)
+                console.log('Error occurs while writing to result.json file', err)
             } else {
-                console.log('Successfully wrote file')
+                console.log('Successfully wrote to result.json')
             }
         });
     }

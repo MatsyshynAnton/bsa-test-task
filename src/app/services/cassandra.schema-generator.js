@@ -8,14 +8,23 @@ export class CassandraSchemaGenerator {
         this.performerResolver = new EntityPerformerResolver()
     }
 
-    async getTableShema(keyspace, table, idField, idValue) {
+    async getTableShema(keyspace, table) {
         const mapper = this.mapperFactory.getMapperForTable(keyspace, table);
         
-        let result = await mapper.find({ [idField]: idValue });
-        result = new Array(...result);
+        let entity = await this.getEntity(mapper);
 
-        const performedEntity = this.performerResolver.performEntity(table, result[0]);
+        if (!entity) {
+            throw new Error('Cannot build schema from empty table');
+        }
+
+        const performedEntity = this.performerResolver.performEntity(table, entity);
 
         return JsonShemaGenerator.getJsonSchema(performedEntity, table);
+    }
+
+    async getEntity(mapper) {
+        let result = await mapper.findAll({ limit: 1 });
+        result = new Array(...(result));
+        return result[0];
     }
 }

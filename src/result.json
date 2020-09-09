@@ -1,1 +1,1 @@
-{"$schema":"http://json-schema.org/draft-04/schema#","title":"user","type":"object","properties":{"id":{"type":"string"},"address":{"type":"object","properties":{"city":{"type":"string"},"street":{"type":"string"},"house":{"type":"number"}}},"age":{"type":"number"},"name":{"type":"string"},"surname":{"type":"string"}}}
+{"$schema":"http://json-schema.org/draft-04/schema#","title":"user","type":"object","properties":{"id":{"type":"string"},"address":{"type":"string"},"age":{"type":"number"},"name":{"type":"string"},"surname":{"type":"string"}}}

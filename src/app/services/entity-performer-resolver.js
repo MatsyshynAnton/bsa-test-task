@@ -9,9 +9,9 @@ export class EntityPerformerResolver {
 
     performEntity(tableName, entity) {
         if (tableName === 'user') {
-            return this.userPerformer.getMappedObject(entity);
+            return this.userPerformer.getPerformedObject(entity);
         }
 
-        throw new Error('You trying to map values from table, which does not have mapper.');
+        throw new Error('You trying to map values from table, which does not have performer.');
     }
 }

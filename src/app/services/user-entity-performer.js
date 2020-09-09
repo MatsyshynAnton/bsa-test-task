@@ -2,7 +2,11 @@ import { JsonShemaGenerator } from './json-schema-generator.js';
 
 export class UserEntityPerformer {
 
-    getMappedObject(user) {
+    getPerformedObject(user) {
+        if (!user) {
+            throw new Error('Cannot work with undefined or null user');
+        }
+
         user.id = user.id.toString();
 
         try {

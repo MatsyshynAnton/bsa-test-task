@@ -1,7 +1,7 @@
 import cassandra from 'cassandra-driver';
 import { CassandraClientFactory } from './services/cassandra.client-factory.js'
 import { CassandraMapperFactory } from './services/cassandra.mapper-factory.js';
-import { CassandraSchemaReader } from './services/cassandra.schema-reader.js';
+import { CassandraSchemaGenerator } from './services/cassandra.schema-generator.js';
 import { JsonShemaGenerator } from './services/json-schema-generator.js';
 
 export default class App {
@@ -12,14 +12,23 @@ export default class App {
 
         const mapperFactory = new CassandraMapperFactory(client);
 
-        const schemaReader = new CassandraSchemaReader(mapperFactory);
+        const schemaReader = new CassandraSchemaGenerator(mapperFactory);
 
-        const user = { id: ' ggg', age: 5}
+        schemaReader.getTableShema('society','user')
+            .then(res => console.log(res));
+        // const user = { id: ' ggg', age: 5}
 
-        const schema = JsonShemaGenerator.getJsonSchema(user, 'user');
-        console.log(schema);
+        // const schema = JsonShemaGenerator.getJsonSchema(user, 'user');
+        // console.log(schema);
+        
         // schemaReader.getTableShema('society', 'user')
-        //     .then(res => console.log(res))
+        //     .then(res => {
+        //         const a =new Array(...res);
+        //         console.log(a[0]);
+        //         console.log(JsonShemaGenerator.getJsonSchema(a[0], 'user'));
+        //     })
         //     .catch(error => console.log(error));
+
+
     }
 }

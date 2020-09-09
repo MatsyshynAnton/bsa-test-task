@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "test": "mocha --ui tdd src/test/client.test.js"
+    "test": "mocha --ui tdd src/tests/tests.js"
   },
   "dependencies": {
     "cassandra-driver": "^4.6.0",

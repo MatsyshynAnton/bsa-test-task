@@ -1,13 +1,12 @@
+import cassandra from 'cassandra-driver';
 import { cassandraConfigs } from '../../config.js';
 
 export class CassandraClientFactory {
 
-    constructor(cassandra) {
-        this.cassandra = cassandra;
-    }
-
     getCassandraClient() {
-        const client = new this.cassandra.Client({
+        this.validateConfigs();
+
+        const client = new cassandra.Client({
             contactPoints: [`${cassandraConfigs.host}:${cassandraConfigs.port}`],
             localDataCenter: cassandraConfigs.datacenter,
             credentials: { username: cassandraConfigs.user, password: cassandraConfigs.password }
@@ -24,7 +23,9 @@ export class CassandraClientFactory {
         if (!cassandraConfigs.host ||
             !cassandraConfigs.port ||
             !cassandraConfigs.user ||
-            !cassandraConfigs.password);
-            throw new Error('Invalid configurations specified');
+            !cassandraConfigs.password ||
+            !cassandraConfigs.datacenter) {
+                throw Error('Invalid configurations specified');
+            }
     }
 }

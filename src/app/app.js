@@ -1,4 +1,3 @@
-import cassandra from 'cassandra-driver';
 import { CassandraClientFactory } from './services/cassandra.client-factory.js'
 import { CassandraMapperFactory } from './services/cassandra.mapper-factory.js';
 import { CassandraSchemaGenerator } from './services/cassandra.schema-generator.js';
@@ -7,7 +6,7 @@ import { JsonWriter } from './services/json-writer.js';
 export default class App {
 
     constructor() {
-        const clientFactory = new CassandraClientFactory(cassandra);
+        const clientFactory = new CassandraClientFactory();
         const client = clientFactory.getCassandraClient();
 
         const mapperFactory = new CassandraMapperFactory(client);
